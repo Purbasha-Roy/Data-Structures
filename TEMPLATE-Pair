@@ -1,0 +1,57 @@
+//Single datatype
+#include<iostream>
+using namespace std;
+template <typename T>
+class Pair{
+    T x;
+    T y;
+    public:
+    void setX(T x){
+        this->x=x;
+    }
+    int getX(){
+        return x;
+    }
+    void setY(T y){
+        this->y=y;
+    }
+    int getY(){
+        return y;
+    }
+};
+int main(){
+    Pair<int> p1;
+    p1.setX(10);
+    p1.setY(20);
+    cout<<p1.getX()<<" "<<p1.getY();
+    return 0;
+}
+
+//Mixed Datatype
+#include<iostream>
+using namespace std;
+template <typename T, typename V>
+class Pair{
+    T x;
+    V y;
+    public:
+    void setX(T x){
+        this->x=x;
+    }
+    T getX(){
+        return x;
+    }
+    void setY(V y){
+        this->y=y;
+    }
+    V getY(){
+        return y;
+    }
+};
+int main(){
+    Pair<float,char> p1;
+    p1.setX(10.788);
+    p1.setY('c');
+    cout<<p1.getX()<<" "<<p1.getY();
+    return 0;
+}
