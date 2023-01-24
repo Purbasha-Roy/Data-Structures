@@ -1,4 +1,4 @@
-//Creating two nodes and linking them
+//Creating two nodes and linking them STATICALLY
 #include<iostream>
 using namespace std;
 class Node{
