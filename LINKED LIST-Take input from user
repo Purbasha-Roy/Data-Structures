@@ -1,4 +1,5 @@
 //Take input from user
+//TIME COMPLEXITY O(N^2)
 #include <iostream>
 using namespace std;
 class Node{
