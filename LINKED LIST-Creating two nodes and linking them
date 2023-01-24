@@ -1,0 +1,24 @@
+//Creating two nodes and linking them
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    Node(int data){
+        this->data=data;
+        next=NULL;
+    }
+};
+int main(){
+//CREATING NODE N1
+    Node n1(1);
+//STORING THE ADDRESS OF N1 IN HEAD
+    Node *head=&n1;
+    Node n2(2);
+//LINKING THE ADDRESS OF N2 WITH N1
+    n1.next=&n2;
+//PRINT THE DATA
+    cout<<n1.data<<" "<<n2.data;
+    return 0;
+}
