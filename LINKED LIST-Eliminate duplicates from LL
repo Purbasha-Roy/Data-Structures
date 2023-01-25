@@ -1,0 +1,23 @@
+//Eliminate duplicates from LL
+Node *removeDuplicates(Node *head)
+{
+    //Write your code hereB
+	if(head==NULL){
+		return NULL;
+	}
+	Node *p=head;
+	Node *q=head->next;
+	while(q!=NULL){
+		if(p->data==q->data){
+			p->next=q->next;
+			Node *t=q;
+			q=q->next;
+			delete t;
+		}
+		else{
+			p=p->next;
+			q=q->next;
+		}
+    }
+    return head;
+}
