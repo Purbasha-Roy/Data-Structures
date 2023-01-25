@@ -1,0 +1,26 @@
+//AppendLastNToFirst
+Node *appendLastNToFirst(Node *head, int n)
+{
+    //Write your code her
+	if(head==NULL){
+		return NULL;
+	}
+	int length=0;
+	Node *temp=head;
+	while(temp!=NULL){
+		length++;
+		temp=temp->next;
+	}
+	Node * p=head;
+	Node * q=head;
+	for(int i=1;i<(length-n);i++){
+		p=p->next;
+	}
+	for(int i=1;i<length;i++){
+		q=q->next;
+	}
+	q->next=head;
+	head=p->next;
+	p->next=NULL;
+	return head;
+}
