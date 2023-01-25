@@ -1,0 +1,22 @@
+//Find the ith Node
+int findNode(Node *head, int n){
+    // Write your code here.
+    int count=0;
+    if(head==NULL){
+        return -1;
+    }
+    if(n==0){
+        return head->data;
+    }
+    Node *temp=head;
+    while(temp!=NULL){
+        if(temp->data==n){
+            return count;
+        }
+        else{
+            temp=temp->next;
+            count++;
+        }
+    }
+    return -1;
+}
