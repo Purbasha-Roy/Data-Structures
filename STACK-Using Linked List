@@ -1,0 +1,53 @@
+//Using linked list
+class Stack {
+	// Define the data members
+    Node *head;
+    int size;
+   public:
+    Stack() {
+        // Implement the Constructor
+        head=NULL;
+        size=0;
+    }
+
+	/*----------------- Public Functions of Stack -----------------*/
+    int getSize() {
+        // Implement the getSize() function
+        return size;
+    }
+
+    bool isEmpty() {
+        // Implement the isEmpty() function
+        return head==NULL;
+        //return size==0;
+    }
+
+    void push(int element) {
+        // Implement the push() function
+        Node * p=new Node(element);
+        p->next=head;
+        head=p;
+        size=size+1;
+    }
+
+    int pop() {
+        // Implement the pop() function
+        if(!head){
+            return -1;
+        }
+        int x=head->data;
+        Node *t=head;
+        head=head->next;
+        delete t;
+        size--;
+        return x;
+    }
+
+    int top() {
+        // Implement the top() function
+        if(head==NULL){
+            return -1;
+        }
+        return head->data;
+    }
+};
