@@ -1,0 +1,40 @@
+//Find,Count,Size,Insert,Erase
+#include<iostream>
+#include<string>
+#include<unordered_map>
+using namespace std;
+int main(){
+    unordered_map<string,int> a;
+    pair<string,int> p("abc",1);
+    //INSERT
+    a.insert(p);
+    a["def"]=2;
+    
+    //FIND OR ACCESS
+    cout<<a["abc"]<<" same as "<<a.at("abc")<<endl;
+    cout<<a["def"]<<" same as "<<a.at("def")<<endl;
+    a["ghi"];
+    cout<<"Insert default value 0: "<<a.at("ghi")<<endl;
+    
+    //CHECK PRESENCE
+    cout<<"count of ghi"<<a.count("ghi")<<endl;
+    if(a.count("efg")>0){
+        cout<<"efg is present"<<endl;
+    }
+    else{
+        cout<<"efg is not present"<<endl;
+    }
+    
+    //SIZE
+    cout<<"Size of the map "<<a.size()<<endl;
+    
+    //DELETE
+    a.erase("ghi");
+    if(a.count("ghi")>0){
+        cout<<"ghi is present"<<endl;
+    }
+    else{
+        cout<<"ghi is not present"<<endl;
+    }
+    return 0;
+}
