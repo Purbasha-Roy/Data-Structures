@@ -1,0 +1,128 @@
+#include<bits/stdc++.h>
+using namespace std;
+class TrieNode{
+    public:
+    char data;
+    TrieNode **children;
+    bool isTerminal;
+    
+    TrieNode(char data){
+        this->data=data;
+        children=new TrieNode*[26];
+        for(int i=0;i<26;i++){
+            children[i]=NULL;
+        }
+        isTerminal=false;
+    }
+};
+class Trie{
+    TrieNode *root;
+    
+    public:
+    Trie(){
+        root=new TrieNode('\0');
+    }
+    
+    void insert(TrieNode *root,string word){
+        //BASE CASE
+        if(word.size()==0){
+            root->isTerminal=true;
+            return;
+        }
+        
+        //SMALL CALCULATION
+        int index=word[0]-'a';
+        TrieNode *child;
+        if(root->children[index]!=NULL){
+            child=root->children[index];
+        }
+        else{
+            child=new TrieNode(word[0]);
+            root->children[index]=child;
+        }
+        
+        //RECURSIVE CALL
+        insert(child,word.substr(1));
+    }
+    
+    void insert(string word){
+        insert(root,word);
+    }
+    
+    bool search(TrieNode *root, string word) {
+        // Write your code here
+        // Base Case
+        if(word.size()==0){
+            if(root->isTerminal){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //Small calculations
+        int index=word[0]-'a';
+        TrieNode *child;
+        if(root->children[index]!=NULL){
+            child=root->children[index];
+        }
+        else{
+            return false;
+        }
+        
+        //Recursive call
+        return search(child, word.substr(1));
+    }
+
+    bool search(string word){
+        return search(root,word);
+    }
+    
+    void removeword(TrieNode *root,string word){
+        //Base case
+        if(word.size()==0){
+            root->isTerminal=false;
+            return;
+        }
+        
+        //Small calculation
+        int index=word[0]-'a';
+        TrieNode *child;
+        if(root->children[index]!=NULL){
+            child=root->children[index];
+        }
+        else{
+            //Word not found
+            return;
+        }
+        
+        //Base case
+        removeword(child,word.substr(1));
+        
+        //Remove if the word is useless
+        if(child->isTerminal==false){
+            for(int i=0;i<26;i++){
+                if(child->children[i]!=NULL){
+                    return;
+                }
+            }
+            delete child;
+            root->children[index]=NULL;
+        }
+    }
+    
+    void removeword(string word){
+        removeword(root,word);
+    }
+};
+
+int main(){
+    Trie t;
+    t.insert("hello");
+    t.insert("help");
+    cout<<t.search("hello")<<endl;
+    t.removeword("hello");
+    cout<<t.search("hello")<<endl;
+    return 0;
+}
